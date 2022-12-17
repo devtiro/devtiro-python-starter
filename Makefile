@@ -11,13 +11,13 @@ min_test_cov = "85"
 # Install dependencies using pip.
 ##
 deps:
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 
 ##
 # Freezes dependencies to requirements.txt.
 ##
 deps-freeze:
-	pip freeze > requirements.txt
+	pip3 freeze > requirements.txt
 
 ##
 # Formats the project and test code using the black formatter.
@@ -31,14 +31,13 @@ format:
 # N.B - Asserts Google docstrings on the project directory, but not the test directory.
 ##
 lint:
-	flake8 ${proj_dir} --docstring-convention=google && \
+	flake8 ${proj_dir} && \
 	flake8 ${test_dir} --extend-ignore D
 
 ##
 # Security checks the project.
 ##
 security:
-	safety check -r requirements.txt && \
 	bandit -r ${proj_dir}
 
 ##
